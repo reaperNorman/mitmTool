@@ -4,11 +4,19 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import mitmTool.main.Parse_types;
+
 public class Linux {
 
-	public static void run(String command)
+	private static Adapter[] interfaces;
+	public static Adapter[] get_network_interfaces()
+	{	
+		
+		return interfaces;
+	}
+	
+	public static String run(String command)
 	{
-
 		try {
 
 			Process p = Runtime.getRuntime().exec(command);
@@ -18,12 +26,10 @@ public class Linux {
 			String output = "";
 
 			while ((line = buf.readLine()) != null) {
-				output += line + "\n";
-
-	  		System.out.println(output);
+				output += line + '\n';
 	  		}
 			
-
+			return output;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -31,11 +37,17 @@ public class Linux {
 			// TODO Auto-generated catch block
 			e.printStackTrace(); }
 		
-		
+		return null;
 	}
-	public static void parse_output()
+	public static void parse_output_for(Parse_types type)
 	{
-		
+		switch(type)
+		{
+		// NETWORK INTERFACES
+		case NETWORK_INTERFACES:
+			
+			break;
+		}
 	}
 	
 }
